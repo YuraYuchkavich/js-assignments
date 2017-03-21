@@ -22,7 +22,8 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-    throw new Error('Not implemented');
+	return value1+value2;
+    
 }
 
 
@@ -38,7 +39,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-    throw new Error('Not implemented');
+    return value.length;
 }
 
 /**
@@ -55,7 +56,7 @@ function getStringLength(value) {
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
-    throw new Error('Not implemented');
+    return 'Hello, '+firstName+' '+lastName+'!';
 }
 
 /**
@@ -68,8 +69,11 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(value) {
-    throw new Error('Not implemented');
+function extractNameFromTemplate(value) {;
+	
+	
+	
+    return value.substring(7,value.length-1);
 }
 
 
@@ -84,7 +88,7 @@ function extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-    throw new Error('Not implemented');
+    return value[0];
 }
 
 /**
@@ -99,7 +103,7 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-    throw new Error('Not implemented');
+    return value.replace(/^\s+/, "").replace(/\s+$/, "");
 }
 
 /**
@@ -114,7 +118,11 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-    throw new Error('Not implemented');
+	let str='';
+   for (let i=0; i<count;i++)
+	   str+=value;
+   return str;
+	   
 }
 
 /**
@@ -130,7 +138,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-    throw new Error('Not implemented');
+    return str.replace(value,"");
 }
 
 /**
@@ -145,7 +153,8 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-    throw new Error('Not implemented');
+	
+    return str.substring(1,str.length-1);
 }
 
 
@@ -160,7 +169,7 @@ function unbracketTag(str) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-    throw new Error('Not implemented');
+    return str.toUpperCase();
 }
 
 /**
@@ -174,7 +183,7 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    throw new Error('Not implemented');
+    return str.split(';');
 }
 
 /**
@@ -221,7 +230,24 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    throw new Error('Not implemented');
+		var str1='';
+	let chr;
+    for(let i=0;i<str.length;i++)
+	{
+		chr = str.charCodeAt(i);
+		console.log(chr);
+		if((chr>=65)&&(chr<=90)||(chr>=97)&&(chr<=122)){
+		if ((chr>=65)&&(chr<=91)) {if ((chr+13)>=91) str1+=String.fromCharCode(chr+13-26); else str1+=String.fromCharCode(chr+13); } 
+		if ((chr>=97)&&(chr<=123)) {if ((chr+13)>=123) str1+=String.fromCharCode(chr+13-26); else str1+=String.fromCharCode(chr+13); } 
+		}
+		else
+		
+		 str1+=String.fromCharCode(chr);
+		
+		
+	
+	}
+	return str1;
 }
 
 /**
@@ -238,7 +264,12 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    throw new Error('Not implemented');
+       let a=value;
+	   if (a instanceof String) return true;
+	   if (typeof value ==='string')return true;
+	   
+	   
+	   else return false;
 }
 
 
@@ -267,7 +298,15 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    throw new Error('Not implemented');
+let array=[['A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',],
+		   ['A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',],
+           ['A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',],
+           ['A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠']];
+		  for(let i=0;i<4;i++)
+			  for(let j=0;j<13;j++)
+			  {
+				  if (array[i][j]==value) return j +13*i;
+			  }
 }
 
 
