@@ -210,7 +210,12 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-    throw new Error('Not implemented');
+     if ((width < 2) || (height < 2) || (typeof(width) !== 'number') || (typeof(height) !== 'number')) throw new Error('Incorrect data');
+     let arr = [];
+     arr.push(`┌${'─'.repeat(width - 2)}┐\n`);
+     arr.push(`│${' '.repeat(width - 2)}│\n`.repeat(height - 2));
+     arr.push(`└${'─'.repeat(width - 2)}┘\n`);
+     return arr.join('');
 }
 
 

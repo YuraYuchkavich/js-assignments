@@ -9,6 +9,15 @@
  ********************************************************************************************/
 
 
+/********************************************************************************************
+ *                                                                                          *
+ * Plese read the following tutorial before implementing tasks:                             *
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators   *
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield        *
+ *                                                                                          *
+ ********************************************************************************************/
+
+
 /**
  * Returns the lines sequence of "99 Bottles of Beer" song:
  *
@@ -32,8 +41,28 @@
  * @return {Iterable.<string>}
  *
  */
-function* get99BottlesOfBeer() {
-    throw new Error('Not implemented');
+function get99BottlesOfBeer() {
+    let res = [];
+    let tmp;
+    for(let i = 99; i > 0; i--){
+        if(i > 2){
+            tmp = i - 1 + ' bottles';
+        }else if(i === 2) {
+            tmp = 1 + ' bottle';
+        }else if(i === 1){
+            tmp = 'no more bottles'
+        }
+        if (i === 1){
+            res.push(`${i} bottle of beer on the wall, ${i} bottle of beer.`);
+            res.push(`Take one down and pass it around, ${tmp} of beer on the wall.`);
+            continue;
+        }
+        res.push(`${i} bottles of beer on the wall, ${i} bottles of beer.`);
+        res.push(`Take one down and pass it around, ${tmp} of beer on the wall.`);
+    }
+    res.push('No more bottles of beer on the wall, no more bottles of beer.');
+    res.push('Go to the store and buy some more, 99 bottles of beer on the wall.');
+    return res;
 }
 
 
@@ -46,8 +75,12 @@ function* get99BottlesOfBeer() {
  * @return {Iterable.<number>}
  *
  */
-function* getFibonacciSequence() {
-    throw new Error('Not implemented');
+function getFibonacciSequence() {
+    let res = [0, 1];
+    for(let i = 2; i < 100; i++){
+        res[i] = res[i-2] + res[i-1];
+    }
+    return res;
 }
 
 
@@ -81,6 +114,7 @@ function* getFibonacciSequence() {
  *  depthTraversalTree(node1) => node1, node2, node3, node4, node5, node6, node7, node8
  *
  */
+
 function* depthTraversalTree(root) {
     throw new Error('Not implemented');
 }
@@ -128,6 +162,7 @@ function* breadthTraversalTree(root) {
 function* mergeSortedSequences(source1, source2) {
     throw new Error('Not implemented');
 }
+
 
 
 module.exports = {

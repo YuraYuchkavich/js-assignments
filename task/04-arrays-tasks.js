@@ -203,7 +203,7 @@ return  arr.slice(arr.length-n,arr.length);
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-throw new Error('Not implemented');
+ return arr.reduce((pel, el) => `${pel}\n${el}`);
 }
 
 /**
@@ -327,7 +327,23 @@ function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-   throw new Error('Not implemented');
+     let obj = {'zero': 0,
+             'one': 1,
+             'two': 2,
+             'three': 3,
+             'four': 4,
+             'five': 5,
+             'six': 6,
+             'seven': 7,
+             'eight': 8,
+             'nine': 9}
+  function compare(a, b){
+    a = obj[a];
+    b = obj[b];
+    if (a > b) return 1;
+    if (a < b) return -1;
+  }
+  return arr.sort(compare);
 }
 
 /** 
@@ -421,7 +437,18 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
-   throw new Error('Not implemented');
+    function compare(a, b){
+    let c = a.country;
+    let d = b.country;
+    if(c === d){
+      c = a.city;
+      d = b.city;
+    }
+    if (c > d) return 1;
+    if (c < d) return -1;
+  }
+  return arr.sort(compare);
+
 }
 
 /**
@@ -527,7 +554,8 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-    throw new Error('Not implemented');
+    let res = arr.reduce((pr, el) => pr.concat(childrenSelector(el)), []);
+    return res;
 }
 
 
